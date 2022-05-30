@@ -32,11 +32,35 @@ unsigned int binaryToInt(char str[])
     }
     return answer;
 } */
+
+// decimal to binary
+void toBinary(unsigned int value, char str[])
+{
+    int idx = 0;
+    while (value > 0)
+    {
+        int digit = value % 2;
+        value /= 2;
+        // printf("%d", digit);
+        str[idx] = '0' + digit;
+        idx++;
+    }
+    str[idx] = '\0';
+    for (int i = 0; i < idx; i++)
+    {
+        int temp = str[i];
+        str[i] = str[idx - 1];
+        str[idx - 1] = temp;
+    }
+}
 int main()
 {
     char str[100];
-    gets(str);
-    printf("%d\n", binaryToInt(str));
+    unsigned int value = 10;
+    // gets(str);
+    // printf("%d\n", binaryToInt(str));
+    toBinary(value, str);
+    printf("%s\n", str);
 
     return 0;
 }
